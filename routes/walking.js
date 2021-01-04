@@ -12,7 +12,7 @@ const loginCheck = require('../middleware/loginCheck')
 router.prefix('/api/walking')
 
 router.get('/list', async function (ctx, next) {
-    const listData = await getList()
+    const listData = await getList({status: 1})
     ctx.body = new SuccessModel(listData)
 })
 

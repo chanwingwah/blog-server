@@ -3,13 +3,12 @@
 const mongoose = require('../db')
 
 const BookSchema = mongoose.Schema({
-    title: {
+    name: {
         type: String,
         required: true // 必需
     },
     author: String,
     evaluation: String,
-    name: String,
     description: String,
     photo: String,
     status: Number,

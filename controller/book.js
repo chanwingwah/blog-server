@@ -1,9 +1,9 @@
 // const xss = require('xss')
 const Book = require('../db/models/Book')
 
-const getList = async () => { 
+const getList = async (params) => { 
     // 动态拼接查询条件
-    const whereOpt = {}
+    const whereOpt = params
     // if (author) whereOpt.author = author
     // if (keyword) whereOpt.keyword = new RegExp(keyword)
     // ...
