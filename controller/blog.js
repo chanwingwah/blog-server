@@ -8,7 +8,9 @@ const getList = async () => {
     // if (keyword) whereOpt.keyword = new RegExp(keyword)
     // ...
 
-    const list = await Blog.find(whereOpt).sort({ _id: -1 })
+    const list = await Blog.find(whereOpt, {
+        markdown:false
+    }).sort({ _id: -1 })
     return list
 }
 

@@ -7,10 +7,16 @@ const BlogSchema = mongoose.Schema({
         type: String,
         required: true // 必需
     },
-    contents: String,
-    tagNames: String,
+    markdown: String,
+    tagNames: Array,
+    category: String,
     summary: String,
-    status: Number
+    status: Number,
+    viewCount: Number,
+    commentCount: Number,
+    likeCount:Number,
+    comments: Array
+
 }, { timestamps: true })
 
 const Blog = mongoose.model('blog', BlogSchema)

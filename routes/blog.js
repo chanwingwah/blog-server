@@ -7,6 +7,7 @@ const {
   delBlog
 } = require('../controller/blog')
 const { SuccessModel, ErrorModel } = require('../model/resModel')
+const { awaitWrap } = require('../utils/awaitWrap');
 const loginCheck = require('../middleware/loginCheck')
 
 router.prefix('/api/blog')
@@ -23,8 +24,12 @@ router.get('/detail', async function (ctx, next) {
 
 router.post('/new', loginCheck, async function (ctx, next) {
   const body = ctx.request.body
-  const data = await newBlog(body)
-  ctx.body = new SuccessModel(data)
+  const [err, data] = await awaitWrap(newBlog(body))
+  if(data) {
+      ctx.body = new SuccessModel(data)
+  } else {
+      ctx.body = new ErrorModel(err)
+  }
 })
 
 router.post('/update', loginCheck, async function (ctx, next) {
