@@ -46,10 +46,35 @@ const delWalking = async (id, author) => {
     return true
 }
 
+const addLike = async (id, blogData = {}) => {
+    let {likeCount} = await Walking.findById(id, 'likeCount')
+    likeCount++
+    const walking = await Walking.findOneAndUpdate(
+        { _id: id },
+        {likeCount},
+        { new: true , fields: 'likeCount'}  // 返回修改后的数据
+    )
+    return walking
+}
+const cancelLike = async (id, walkingData = {}) => {
+    let {likeCount} = await Walking.findById(id, 'likeCount')
+    if(likeCount>0 ) {
+        likeCount--
+    }
+    const walking = await Walking.findOneAndUpdate(
+        { _id: id },
+        {likeCount},
+        { new: true , fields: 'likeCount'}  // 返回修改后的数据
+    )
+    return walking
+}
+
 module.exports = {
     getList,
     getDetail,
     newWalking,
     updateWalking,
-    delWalking
+    delWalking,
+    addLike,
+    cancelLike
 }

@@ -8,7 +8,7 @@ const WalkingSchema = mongoose.Schema({
         required: true // 必需
     },
     images: Array,
-    likeNum: Number,
+    likeCount: Number,
     status: Number,
 }, { timestamps: true })
 

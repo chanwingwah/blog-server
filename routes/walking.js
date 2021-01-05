@@ -1,10 +1,14 @@
 const router = require('koa-router')()
+const { awaitWrap } = require('../utils/awaitWrap');
+
 const {
   getList,
   getDetail,
   newWalking,
   updateWalking,
-  delWalking
+  delWalking,
+  addLike,
+  cancelLike
 } = require('../controller/walking')
 const { SuccessModel, ErrorModel } = require('../model/resModel')
 const loginCheck = require('../middleware/loginCheck')
@@ -37,7 +41,6 @@ router.post('/update', loginCheck, async function (ctx, next) {
 })
 
 router.post('/del', loginCheck, async function (ctx, next) {
-  const author = ctx.session.username
   const val = await delWalking(ctx.query.id)
   if (val) {
       ctx.body = new SuccessModel()
@@ -45,5 +48,25 @@ router.post('/del', loginCheck, async function (ctx, next) {
       ctx.body = new ErrorModel('删除失败')
   }
 })
+
+// 点赞
+router.post('/addLike', async function (ctx, next) {
+    const body = ctx.request.body
+    const [err, data] = await awaitWrap(addLike(body.id))
+        if(data) {
+        ctx.body = new SuccessModel(data)
+    } else {
+        ctx.body = new ErrorModel(err)
+    }
+  })
+router.post('/cancelLike', async function (ctx, next) {
+    const body = ctx.request.body
+    const [err, data] = await awaitWrap(cancelLike(body.id))
+        if(data) {
+        ctx.body = new SuccessModel(data)
+    } else {
+        ctx.body = new ErrorModel(err)
+    }
+  })
 
 module.exports = router

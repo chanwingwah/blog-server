@@ -47,10 +47,47 @@ const delBlog = async (id, author) => {
     return true
 }
 
+const addLikeBlog = async (id, blogData = {}) => {
+    let {likeCount} = await Blog.findById(id, 'likeCount')
+    likeCount++
+    const blog = await Blog.findOneAndUpdate(
+        { _id: id },
+        {likeCount},
+        { new: true , fields: 'likeCount'}  // 返回修改后的数据
+    )
+    return blog
+}
+const cancelLikeBlog = async (id, blogData = {}) => {
+    let {likeCount} = await Blog.findById(id, 'likeCount')
+    if(likeCount>0 ) {
+        likeCount--
+    }
+    const blog = await Blog.findOneAndUpdate(
+        { _id: id },
+        {likeCount},
+        { new: true , fields: 'likeCount'}  // 返回修改后的数据
+    )
+    return blog
+}
+const addViewCount = async (id, blogData = {}) => {
+    let {viewCount} = await Blog.findById(id, 'viewCount')
+    viewCount++
+    const blog = await Blog.findOneAndUpdate(
+        { _id: id },
+        {viewCount},
+        { new: true , fields: 'viewCount'}  // 返回修改后的数据
+    )
+    return blog
+}
+
+
 module.exports = {
     getList,
     getDetail,
     newBlog,
     updateBlog,
-    delBlog
+    delBlog,
+    addLikeBlog,
+    cancelLikeBlog,
+    addViewCount
 }

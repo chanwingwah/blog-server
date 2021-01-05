@@ -15,7 +15,6 @@ const BlogSchema = mongoose.Schema({
     viewCount: Number,
     commentCount: Number,
     likeCount:Number,
-    comments: Array
 
 }, { timestamps: true })
 
