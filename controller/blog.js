@@ -9,7 +9,8 @@ const getList = async () => {
     // ...
 
     const list = await Blog.find(whereOpt, {
-        markdown:false
+        markdown:false,
+        HTML:false
     }).sort({ _id: -1 })
     return list
 }

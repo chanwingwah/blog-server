@@ -8,6 +8,7 @@ const BlogSchema = mongoose.Schema({
         required: true // 必需
     },
     markdown: String,
+    HTML: String,
     tagNames: Array,
     category: String,
     summary: String,
