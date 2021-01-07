@@ -3,15 +3,15 @@ const Blog = require('../db/models/Blog')
 
 const getList = async () => { 
     // 动态拼接查询条件
-    const whereOpt = {}
+    const whereOpt = { status:1}
     // if (author) whereOpt.author = author
     // if (keyword) whereOpt.keyword = new RegExp(keyword)
     // ...
 
     const list = await Blog.find(whereOpt, {
         markdown:false,
-        HTML:false
-    }).sort({ _id: -1 })
+        HTML:false,
+    }).sort({ releaseTime: 1 })
     return list
 }
 
