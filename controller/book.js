@@ -3,7 +3,7 @@ const Book = require('../db/models/Book')
 
 const getList = async (params) => { 
     // 动态拼接查询条件
-    const whereOpt = params
+    const whereOpt = Object.assign({status:1},params)
     // if (author) whereOpt.author = author
     // if (keyword) whereOpt.keyword = new RegExp(keyword)
     // ...
