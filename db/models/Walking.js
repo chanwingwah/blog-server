@@ -7,9 +7,18 @@ const WalkingSchema = mongoose.Schema({
         type: String,
         required: true // 必需
     },
-    images: Array,
-    likeCount: Number,
-    status: Number,
+    images: {
+        type: Array,
+        default:[]
+    },
+    likeCount: {
+        type: Number,
+        default:0
+    },
+    status: {
+        type: Number,
+        default:1
+    },
 }, { timestamps: true })
 
 const Walking = mongoose.model('walking', WalkingSchema)

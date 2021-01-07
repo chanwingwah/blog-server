@@ -11,8 +11,14 @@ const CommentSchema = mongoose.Schema({
     "website": String,
     "quoteId": String,
     "quote":Object,
-    "status": Number,
-    "likeCount":Number
+    "status": {
+        type: Number,
+        default:1
+    },
+    "likeCount":{
+        type: Number,
+        default:0
+    }
 }, { timestamps: true })
 
 const Comment = mongoose.model('comment', CommentSchema)

@@ -8,13 +8,19 @@ const BookSchema = mongoose.Schema({
         required: true // 必需
     },
     author: String,
-    evaluation: String,
+    evaluation: String, //评估
     description: String,
     photo: String,
-    status: Number,
+    status: {
+        type: Number,
+        default:1
+    },
     difficulty: Number,
     progress: Number,
-    recommendation: Number
+    recommendation: {
+        type: Number,
+        default:5
+    }
 }, { timestamps: true })
 
 const Book = mongoose.model('book', BookSchema)
