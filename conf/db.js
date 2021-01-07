@@ -20,8 +20,7 @@ if (env === 'dev') {
 if (env === 'production') {
     // mongodb
     MONGODB_CONF = {
-        url: 'mongodb://localhost:27017',
-        dbName: 'myblog'
+        url: 'mongodb://localhost:27017/myblog',
     }
     // redis
     REDIS_CONF = {
