@@ -38,7 +38,7 @@ router.post('/update', loginCheck, async function (ctx, next) {
 
 router.post('/del', loginCheck, async function (ctx, next) {
   const body = ctx.request.body
-  const val = await del(body.id)
+  const val = await del(body)
   if (val) {
       ctx.body = new SuccessModel()
   } else {
