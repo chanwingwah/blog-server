@@ -7,8 +7,7 @@ let REDIS_CONF
 if (env === 'dev') {
     // mongodb
     MONGODB_CONF = {
-        url: 'mongodb://localhost:27017',
-        dbName: 'myblog'
+        url: 'mongodb://localhost:27017/myblog',
     }
     // redis
     REDIS_CONF = {
