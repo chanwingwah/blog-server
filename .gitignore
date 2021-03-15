@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 dist/
 logs/
+package-lock.json
 getPassword.js
 test.js
 .cache/
