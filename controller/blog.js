@@ -11,7 +11,7 @@ const getList = async () => {
     const list = await Blog.find(whereOpt, {
         markdown:false,
         HTML:false,
-    }).sort({ releaseTime: 1 })
+    }).sort({ releaseTime: -1 })
     return list
 }
 
