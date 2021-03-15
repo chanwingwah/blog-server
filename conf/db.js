@@ -17,9 +17,17 @@ if (env === 'dev') {
 }
 
 if (env === 'production') {
+    var url = 'mongodb://localhost:27017/myblog'
+    // 配置从根目录外获取， 方便部署代码更新
+    try {
+        const config = require('../../blog-node-config.js')
+        url = config.mongoUrl
+    } catch(e) {
+        console.log(e)
+    }
     // mongodb
     MONGODB_CONF = {
-        url: 'mongodb://localhost:27017/myblog',
+        url
     }
     // redis
     REDIS_CONF = {
