@@ -18,6 +18,7 @@ const user = require('./routes/user')
 const walking = require('./routes/walking')
 const book = require('./routes/book')
 const comment = require('./routes/comment')
+const subscribe = require('./routes/subscribe')
 
 const { REDIS_CONF } = require('./conf/db')
 // error handler
@@ -82,6 +83,7 @@ app.use(user.routes(), user.allowedMethods())
 app.use(book.routes(), book.allowedMethods())
 app.use(walking.routes(), walking.allowedMethods())
 app.use(comment.routes(), comment.allowedMethods())
+app.use(subscribe.routes(), subscribe.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
