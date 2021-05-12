@@ -8,8 +8,8 @@ const SubscribeSchema = mongoose.Schema({
         required: true // 必需
     },
     nickname: {
-        type: Array,
-        default:[]
+        type: String,
+        required: true // 必需
     },
     status: {
         type: Number,
