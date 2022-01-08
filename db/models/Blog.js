@@ -11,26 +11,30 @@ const BlogSchema = mongoose.Schema({
     releaseTime: Date,
     HTML: String,
     tagNames: {
-        type:Array,
+        type: Array,
         default: []
     },
     category: String,
     summary: String,
     status: {
         type: Number,
-        default:1
+        default: 1
     },
     viewCount: {
         type: Number,
-        default:0
+        default: 0
     },
     commentCount: {
         type: Number,
-        default:0
+        default: 0
     },
-    likeCount:{
+    likeCount: {
         type: Number,
-        default:0
+        default: 0
+    },
+    headers: {
+        type: Array,
+        default: []
     }
 }, { timestamps: true })
 
