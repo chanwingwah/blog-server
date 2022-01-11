@@ -57,7 +57,7 @@ const delBlog = async (id, author) => {
     })
     if (blog == null) return false
     return true
-}x
+}
 
 const addLikeBlog = async (id, blogData = {}) => {
     let { likeCount } = await Blog.findById(id, 'likeCount')
